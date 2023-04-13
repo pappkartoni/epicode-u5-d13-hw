@@ -6,7 +6,6 @@ import {
   Form,
   FormControl,
   ListGroup,
-  Button,
   ListGroupItem,
 } from "react-bootstrap"
 import {io} from "socket.io-client"
@@ -53,8 +52,6 @@ const Home = () => {
     <Container fluid>
       <Row style={{ height: "95vh" }} className="my-3">
         <Col md={9} className="d-flex flex-column justify-content-between">
-          {/* LEFT COLUMN */}
-          {/* TOP AREA: USERNAME INPUT FIELD */}
           {!loggedIn && (
           <Form
             onSubmit={e => {
@@ -70,11 +67,9 @@ const Home = () => {
             />
           </Form>
           )}
-          {/* MIDDLE AREA: CHAT HISTORY */}
           <ListGroup>
             {chatHistory.map((message, i) => <ListGroupItem key={i}><strong>{message.sender}</strong> | {message.text}</ListGroupItem>)}
           </ListGroup>
-          {/* BOTTOM AREA: NEW MESSAGE */}
           <Form
             onSubmit={e => {
               e.preventDefault()
@@ -93,7 +88,6 @@ const Home = () => {
           </Form>
         </Col>
         <Col md={3}>
-          {/* ONLINE USERS SECTION */}
           <div className="mb-3">Connected users:</div>
           <ListGroup>
             {onlineUsers.map(user => <ListGroupItem key={user.socketId}>{user.username}</ListGroupItem>)}
